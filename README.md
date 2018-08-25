@@ -1,4 +1,4 @@
-# express_tutorial_example
+# express example with sequelize
 
 # to run
 for run it go to the root of the project and just run<br />
