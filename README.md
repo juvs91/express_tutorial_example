@@ -13,7 +13,7 @@ PG_PASS=<br />
 PG_DB=<br />
 
 # install dependencies
-in the root of the project pls run to add all dependencies
+in the root of the project pls run to add all dependencies <br />
   npm i
 
 # notes
