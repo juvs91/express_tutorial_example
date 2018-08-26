@@ -1,5 +1,5 @@
 const AbstractRoute = require('./abstract-routes')
-const TasksProcessor = require('../modules').tasks.processor
+const TaskOrchestrator = require('../orchestrators').tasks
 
 class TaskRoutes extends AbstractRoute {
   constructor ({app}) {
@@ -9,8 +9,15 @@ class TaskRoutes extends AbstractRoute {
   */
   init () {
     this.app.get('/tasks', (req, res, next) => {
-      let tasksProcessor = new TasksProcessor()
-      tasksProcessor.getAll()
+      let params = {
+        init: {},
+        data: this.processParams(req),
+        module: 'tasks',
+        klass: 'processor',
+        method: 'getAll'
+      }
+      let taskOrchestrator = new TaskOrchestrator(params)
+      taskOrchestrator.getAll()
         .then(tasks => {
           res.send({tasks})
         })
@@ -20,8 +27,15 @@ class TaskRoutes extends AbstractRoute {
         })
     })
     this.app.get('/tasks/:id', (req, res, next) => {
-      let tasksProcessor = new TasksProcessor()
-      tasksProcessor.get(this.processParams(req))
+      let params = {
+        init: {},
+        data: this.processParams(req),
+        module: 'tasks',
+        klass: 'processor',
+        method: 'get'
+      }
+      let taskOrchestrator = new TaskOrchestrator(params)
+      taskOrchestrator.get()
         .then(task => {
           res.send({task})
         })
@@ -31,8 +45,15 @@ class TaskRoutes extends AbstractRoute {
         })
     })
     this.app.post('/tasks/', (req, res, next) => {
-      let tasksProcessor = new TasksProcessor()
-      tasksProcessor.create(this.processParams(req))
+      let params = {
+        init: {},
+        data: this.processParams(req),
+        module: 'tasks',
+        klass: 'processor',
+        method: 'create'
+      }
+      let taskOrchestrator = new TaskOrchestrator(params)
+      taskOrchestrator.create()
         .then(task => {
           res.send({task})
         })
@@ -43,8 +64,15 @@ class TaskRoutes extends AbstractRoute {
     })
     // pls add a middlesware that get all params,
     this.app.put('/tasks/:id', (req, res, next) => {
-      let tasksProcessor = new TasksProcessor()
-      tasksProcessor.update(this.processParams(req))
+      let params = {
+        init: {},
+        data: this.processParams(req),
+        module: 'tasks',
+        klass: 'processor',
+        method: 'update'
+      }
+      let taskOrchestrator = new TaskOrchestrator(params)
+      taskOrchestrator.update()
         .then(task => {
           res.send({task})
         })
@@ -54,8 +82,15 @@ class TaskRoutes extends AbstractRoute {
         })
     })
     this.app.delete('/tasks/:id', (req, res, next) => {
-      let tasksProcessor = new TasksProcessor()
-      tasksProcessor.destroy(this.processParams(req))
+      let params = {
+        init: {},
+        data: this.processParams(req),
+        module: 'tasks',
+        klass: 'processor',
+        method: 'destroy'
+      }
+      let taskOrchestrator = new TaskOrchestrator(params)
+      taskOrchestrator.destroy()
         .then(task => {
           res.send({task})
         })
