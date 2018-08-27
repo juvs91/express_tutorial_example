@@ -4,7 +4,7 @@
 for run it go to the root of the project and just run<br />
   node . <br />
 # config files
-we have 4 env variables, si create an .env file (with dot at the start pls) and add this for variables and fill them
+we have 4 env variables, so create an .env file (with dot at the start pls) and add this for variables and fill them
 host with the host, port with the port, user with user, pass with password and db with the db <br />
 PG_HOST=<br />
 PG_PORT=<br />
